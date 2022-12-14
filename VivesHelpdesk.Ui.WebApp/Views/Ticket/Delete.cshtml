@@ -1,0 +1,13 @@
+﻿@model Ticket
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1>Delete Ticket</h1>
+<p>Are you sure you want to delete ticket "@Model.Title" written by @Model.Author?</p>
+
+<form method="post">
+    <a asp-action="Index" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> No</a>
+    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Yes</button>
+</form>

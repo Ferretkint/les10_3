@@ -1,0 +1,33 @@
+﻿@model Ticket
+@{
+    var people = (IList<Person>)ViewBag.People;
+}
+
+<div asp-validation-summary="ModelOnly"></div>
+
+<div class="mb-3">
+    <label asp-for="Title" class="form-label"></label>
+    <input asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control"></textarea>
+    <span asp-validation-for="Description"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Author" class="form-label"></label>
+    <input asp-for="Author" class="form-control" />
+    <span asp-validation-for="Author"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="AssignedToId" class="form-label">Assigned To</label>
+    <select asp-for="AssignedToId" class="form-control">
+        <option value="">(Unassigned)</option>
+        @foreach (var person in people)
+        {
+            <option value="@person.Id">@person.FirstName @person.LastName</option>
+        }
+    </select>
+    <span asp-validation-for="AssignedToId"></span>
+</div>

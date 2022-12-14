@@ -1,0 +1,17 @@
+﻿@model Ticket
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<form method="post">
+    <partial name="CreateEditPartial" model="Model" />
+    
+    <a asp-action="Index" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
+</form>
+@*
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}*@

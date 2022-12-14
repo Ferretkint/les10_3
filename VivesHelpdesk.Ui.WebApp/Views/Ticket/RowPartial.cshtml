@@ -1,0 +1,45 @@
+﻿@model Ticket
+
+@{
+    var assignedToPerson = (Person?)ViewBag.AssignedToPerson;
+}
+
+<tr>
+    <td>
+        @Model.CreatedDate.ToLocalTime().ToShortDateString() 
+        @Model.CreatedDate.ToLocalTime().ToShortTimeString()
+    </td>
+    <td>@Model.Title</td>
+    <td>@Model.Author</td>
+    @if (assignedToPerson is null)
+    {
+        <td>
+            @if (Model.AssignedTo is not null)
+            {
+                <a asp-controller="People"
+                   asp-action="Edit"
+                   asp-route-id="@Model.Id">
+                    @Model.AssignedTo.FirstName @Model.AssignedTo.LastName
+                </a>
+            }
+            else
+            {
+                @: Nobody assigned
+            }
+        </td>
+    }
+    <td>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+            <i class="fa fa-edit"></i> Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+            <i class="fa fa-trash"></i> Delete
+        </a>
+        <button class="btn btn-danger" 
+                data-bs-toggle="modal" 
+                data-bs-target="#deleteModal"
+                data-id="@Model.Id"
+                data-role="Delete">
+            <i class="fa fa-trash"></i> Delete with modal
+        </button>
+    </td>
+</tr>

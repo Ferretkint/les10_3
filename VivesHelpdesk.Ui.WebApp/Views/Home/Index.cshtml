@@ -1,0 +1,16 @@
+﻿@model IList<Ticket>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section>
+    <header>
+        <h1>Open Tickets</h1>
+    </header>
+    
+    @foreach (var ticket in Model)
+    {
+        <partial name="TicketPartial" model="ticket"/>
+    }
+    
+</section>
